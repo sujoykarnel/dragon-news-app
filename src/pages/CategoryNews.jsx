@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import NewsCart from "../components/NewsCart";
+import NewsCard from "../components/NewsCard";
 
 const CategoryNews = () => {
   const { data: news } = useLoaderData();
@@ -9,7 +9,7 @@ const CategoryNews = () => {
       <h2 className="font-semibold mb-3">Dragon News Home</h2>
       <div className="space-y-5 mx-5">
         {news.map((singleNews) => (
-          <NewsCart key={singleNews._id} news={singleNews}></NewsCart>
+          <NewsCard key={singleNews._id} news={singleNews}></NewsCard>
         ))}
       </div>
     </div>

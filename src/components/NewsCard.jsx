@@ -1,6 +1,6 @@
 import React from "react";
 
-const NewsCart = ({ news }) => {
+const NewsCard = ({ news }) => {
   console.log(news);
 
   return (
@@ -48,4 +48,4 @@ const NewsCart = ({ news }) => {
   );
 };
 
-export default NewsCart;
+export default NewsCard;
