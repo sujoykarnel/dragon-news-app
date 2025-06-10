@@ -28,10 +28,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/news/:id",
+    HydrateFallback: () => null,
     element: <NewsDetails></NewsDetails>,
+    loader: ({ params }) =>
+      fetch(`https://openapi.programming-hero.com/api/news/${params.id}`),
   },
   {
     path: "/auth",
+    HydrateFallback: () => null,
     element: <AuthLayout></AuthLayout>,
     children: [
       {

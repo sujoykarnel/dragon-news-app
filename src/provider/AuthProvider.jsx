@@ -8,12 +8,13 @@ import {
   signOut,
 } from "firebase/auth";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  console.log(user);
+ 
 
   const createNewUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
