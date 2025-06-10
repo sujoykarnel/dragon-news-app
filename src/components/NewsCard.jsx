@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NewsCard = ({ news }) => {
-  console.log(news);
+  // console.log(news);
 
   return (
     <div className="card lg:card-side bg-base-100 shadow-xl p-4">
@@ -30,18 +31,22 @@ const NewsCard = ({ news }) => {
 
         <p className="text-sm mt-4">{news.details.slice(0, 200)}...</p>
 
-        <div className="flex justify-between items-center mt-4">
-          <div className="badge badge-outline">
+        <div className="block  justify-between items-center mt-4 space-y-2">
+          <div className="badge badge-outline w-full">
             ⭐ {news.rating.number} ({news.rating.badge})
           </div>
-          <div className="badge badge-outline">👁️ {news.total_view} views</div>
+          <div className="badge badge-outline w-full">
+            👁️ {news.total_view} views
+          </div>
           {news.others_info.is_trending && (
-            <div className="badge badge-success">Trending</div>
+            <div className="badge badge-success w-full">Trending</div>
           )}
         </div>
 
         <div className="card-actions justify-end mt-4">
-          <button className="btn btn-primary btn-sm">Read More</button>
+          <Link to={`/news/${news._id}`} className="btn btn-primary btn-sm">
+            Read More
+          </Link>
         </div>
       </div>
     </div>
