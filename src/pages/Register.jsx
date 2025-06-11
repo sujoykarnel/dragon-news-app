@@ -1,15 +1,31 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
-  const { createNewUser, setUser } = useContext(AuthContext);
+  const [error, setError] = useState({});
+
+  const {
+    createNewUser,
+    setUser,
+    updateUserProfile,
+    user: logedUser,
+  } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  if (logedUser && logedUser.email) {
+    navigate("/");
+    return;
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
     //get form data
     const form = new FormData(e.target);
     const name = form.get("name");
+    if (name.length < 3) {
+      setError({ ...error, nameError: "Name must be at least 3 character" });
+    }
     const photoUrl = form.get("photo-url");
     const email = form.get("email");
     const password = form.get("password");
@@ -20,6 +36,13 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        updateUserProfile({ displayName: name, photoURL: photoUrl })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         const errorCode = err.code;
@@ -42,7 +65,9 @@ const Register = () => {
                 className="input"
                 placeholder="name"
               />
-
+              {error.nameError && (
+                <label className="label">{error.nameError}</label>
+              )}
               <label className="label">Photo URL</label>
               <input
                 name="photo-url"
