@@ -64,6 +64,7 @@ const Register = () => {
                 type="text"
                 className="input"
                 placeholder="name"
+                required
               />
               {error.nameError && (
                 <label className="label">{error.nameError}</label>
@@ -74,6 +75,7 @@ const Register = () => {
                 type="text"
                 className="input"
                 placeholder="Photo URL"
+                required
               />
 
               <label className="label">Email</label>
@@ -82,6 +84,7 @@ const Register = () => {
                 type="email"
                 className="input"
                 placeholder="Email"
+                required
               />
 
               <label className="label">Password</label>
@@ -90,6 +93,7 @@ const Register = () => {
                 type="password"
                 className="input"
                 placeholder="Password"
+                required
               />
               <div>
                 <a className="link link-hover">Forgot password?</a>

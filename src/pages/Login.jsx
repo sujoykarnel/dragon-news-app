@@ -45,6 +45,7 @@ const Login = () => {
                 type="email"
                 className="input"
                 placeholder="Email"
+                required
               />
               <label className="label">Password</label>
               <input
@@ -52,10 +53,15 @@ const Login = () => {
                 type="password"
                 className="input"
                 placeholder="Password"
+                required
               />
-              {error.login && <label className="label text-red-600">{error.login}</label>}
+              {error.login && (
+                <label className="label text-red-600">{error.login}</label>
+              )}
               <div>
-                <a className="link link-hover">Forgot password?</a>
+                <Link to="/auth/forgetPassword" className="link link-hover">
+                  Forgot password?
+                </Link>
               </div>
               <button className="btn btn-neutral mt-4">Login</button>
             </form>
