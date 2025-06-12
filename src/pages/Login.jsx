@@ -8,7 +8,7 @@ const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
 
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {

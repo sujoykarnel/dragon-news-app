@@ -25,14 +25,13 @@ const Register = () => {
     const name = form.get("name");
     if (name.length < 3) {
       setError({ ...error, nameError: "Name must be at least 3 character" });
-      return
+      return;
     } else {
       setError({});
     }
     const photoUrl = form.get("photo-url");
     const email = form.get("email");
     const password = form.get("password");
-    console.log({ name, photoUrl, email, password });
 
     // create user
     createNewUser(email, password)
@@ -44,7 +43,7 @@ const Register = () => {
             navigate("/");
           })
           .catch((err) => {
-            console.log(err);
+            // console.log(err);
           });
       })
       .catch((err) => {

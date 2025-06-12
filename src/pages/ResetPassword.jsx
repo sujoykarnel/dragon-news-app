@@ -1,8 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const ResetPassword = () => {
+  const [error, setError] = useState(null);
+
   const { resetPasswordEmail } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
@@ -13,11 +15,13 @@ const ResetPassword = () => {
     resetPasswordEmail(email)
       .then(() => {
         e.target.reset();
+        setError(null);
         alert(
           `Password Reset Mail has been sent to ${email}. Please check inbox.`
         );
       })
       .catch((err) => {
+        setError("Someting could be wrong.");
         console.log(err.message);
       });
   };
@@ -40,6 +44,7 @@ const ResetPassword = () => {
               />
 
               <button className="btn btn-neutral mt-4">Sent</button>
+              {error && <label className="label">{error}</label>}
             </form>
           </div>
         </div>
