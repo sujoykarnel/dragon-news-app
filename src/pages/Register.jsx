@@ -25,6 +25,9 @@ const Register = () => {
     const name = form.get("name");
     if (name.length < 3) {
       setError({ ...error, nameError: "Name must be at least 3 character" });
+      return
+    } else {
+      setError({});
     }
     const photoUrl = form.get("photo-url");
     const email = form.get("email");

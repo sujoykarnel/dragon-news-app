@@ -59,7 +59,7 @@ const Login = () => {
                 <label className="label text-red-600">{error.login}</label>
               )}
               <div>
-                <Link to="/auth/forgetPassword" className="link link-hover">
+                <Link to="/auth/resetPassword" className="link link-hover">
                   Forgot password?
                 </Link>
               </div>

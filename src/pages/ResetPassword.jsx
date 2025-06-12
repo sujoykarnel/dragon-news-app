@@ -1,13 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
-const ForgetPassword = () => {
+const ResetPassword = () => {
+  const { resetPasswordEmail } = useContext(AuthContext);
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const form = new FormData(e.target);
     const email = form.get("email");
-    console.log(email);
+    resetPasswordEmail(email)
+      .then(() => {
+        e.target.reset();
+        alert(
+          `Password Reset Mail has been sent to ${email}. Please check inbox.`
+        );
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
   };
   return (
     <div className="">
@@ -36,4 +48,4 @@ const ForgetPassword = () => {
   );
 };
 
-export default ForgetPassword;
+export default ResetPassword;
