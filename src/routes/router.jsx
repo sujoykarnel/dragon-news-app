@@ -6,7 +6,8 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 import NewsDetails from "../pages/NewsDetails";
 import PrivateRoute from "./PrivateRoute";
-import ResetPassword from "../pages/ResetPassword";
+import ResetPassword from "../pages/resetPassword";
+
 
 
 const router = createBrowserRouter([
